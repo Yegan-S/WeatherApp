@@ -30,7 +30,7 @@ forecast.forEach(function(forecastDay , index) {
 forecastHTML =  forecastHTML + 
  ` <div class="col-2">
                 <div class="weather-forecast-date">${formatDay(forecastDay.time)}</div>
-        <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.daily[0].condition.icon}.png" alt="" width="42" />
+        <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.daily[0].condition.icon}.png" alt="" width="42" />
         <div class="weather-forecast-temperatures">
             <span class="weather-forecast-temperature-max"> ${Math.round(forecastDay.temperature.maximum)}° </span>
         <span class="weather-forecast-temperature-min">${Math.round(forecastDay.temperature.minimum)}°</span>
@@ -46,7 +46,7 @@ forecastHTML =  forecastHTML +
 
 function getForecast(coordinates){
     let apiKey = "tb5f08b166ada0ab28a3f4o4dec6c3e0";
-    let apiUrl =`https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&appid=${apiKey}&units=metric`;
+    let apiUrl =`https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayForecast);
 }
 
